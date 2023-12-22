@@ -1,0 +1,73 @@
+﻿@model STAMVCCRUD.Models.MahasiswaViewModel
+
+
+<h1>Mahasiswa</h1>
+
+<form method="get" class="row">
+    <div class="col-md-8 mb-3">
+        <input type="text" class="form-control" placeholder="Cari Berdasarkan Nama" id="searchString" name="searchString" />
+    </div>
+
+    <div class="col-md-4">
+        <button class="btn btn-primary btn-block" type="submit">Cari</button>
+        <button class="btn btn-danger btn-block" type="submit" asp-controller="Mahasiswa" asp-action="IndexDosen">Reset</button>
+    </div>
+</form>
+
+<a href="@Url.Action("AddMahasiswa", "Mahasiswa")" class="btn btn-primary">Tambah Mahasiswa</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Alamat</th>
+            <th>Jenis Kelamin</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mhs in Model.MahasiswaList)
+        {
+            <tr>
+                <td>@mhs.Nim</td>
+                <td>@mhs.Nama_Mhs</td>
+                <td>@mhs.Tgl_Lahir.ToString("dd-MM-yyyy")</td>
+                <td>@mhs.Alamat</td>
+                <td>@mhs.Jenis_Kelamin</td>
+                <td><a href="@Url.Action("ViewMhs", "Mahasiswa", new { nim = mhs.Nim })">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("IndexMhs", new { currentPage = Model.CurrentPage - 1, searchString = Model.SearchString })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("IndexMhs", new { currentPage = i, searchString = Model.SearchString })">@i</a>
+            </li>
+        }
+
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("IndexMhs", new { currentPage = Model.CurrentPage + 1, searchString = Model.SearchString })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
+

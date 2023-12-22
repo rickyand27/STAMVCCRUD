@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model STAMVCCRUD.Models.AddMahasiswaViewModel;
+@{
+}
+
+<h1>Tambah Mahasiswa</h1>
+<form method="post" action="AddMahasiswa" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Nama</label>
+        <input type="text" class="form-control" asp-for="Nama_Mhs">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Tanggal Lahir</label>
+        <input type="date" class="form-control" asp-for="Tgl_Lahir">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Alamat</label>
+        <input type="text" class="form-control" asp-for="Alamat">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Jenis Kelamin</label>
+        <select class="form-control" asp-for="Jenis_Kelamin">
+            <option value="0">Laki-Laki</option>
+            <option value="1">Perempuan</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

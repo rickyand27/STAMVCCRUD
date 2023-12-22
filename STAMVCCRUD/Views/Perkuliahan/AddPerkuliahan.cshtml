@@ -1,0 +1,32 @@
+﻿@model STAMVCCRUD.Models.Domain.Perkuliahan
+
+
+<h1>Tambah Nilai Perkuliahan</h1>
+
+<form asp-action="AddPerkuliahan" method="post">
+    <div class="mb-3">
+        <label for="Nim" class="form-label">Pilih Mahasiswa</label>
+        @Html.DropDownListFor(model => model.Nim, ViewBag.MahasiswaList as SelectList, "", new { @class = "form-control" })
+        <span asp-validation-for="Nim" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Kode_MK" class="form-label">Pilih Matakuliah</label>
+        @Html.DropDownListFor(model => model.Kode_MK, ViewBag.MatakuliahList as SelectList, "", new { @class = "form-control" })
+        <span asp-validation-for="Kode_MK" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Nip" class="form-label">Pilih Dosen</label>
+        @Html.DropDownListFor(model => model.Nip, ViewBag.DosenList as SelectList, "", new { @class = "form-control" })
+        <span asp-validation-for="Nip" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Nilai" class="form-label">Nilai</label>
+        <input type="text" class="form-control" asp-for="Nilai">
+        <span asp-validation-for="Nilai" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

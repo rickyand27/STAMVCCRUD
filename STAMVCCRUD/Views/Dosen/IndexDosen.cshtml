@@ -1,0 +1,70 @@
+﻿@model STAMVCCRUD.Models.DosenViewModel
+
+
+<h1>Dosen</h1>
+
+<form method="get" class="row">
+    <div class="col-md-8 mb-3">
+        <input type="text" class="form-control" placeholder="Cari Berdasarkan Nama" id="searchString" name="searchString" />
+    </div>
+
+    <div class="col-md-4">
+        <button class="btn btn-primary btn-block" type="submit">Cari</button>
+        <button class="btn btn-danger btn-block" type="submit" asp-controller="Dosen" asp-action="IndexDosen">Reset</button>
+    </div>
+</form>
+
+<a href="@Url.Action("AddDosen", "Dosen")" class="btn btn-primary">Tambah Dosen</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>NIP</th>
+            <th>Nama Dosen</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dosen in Model.DosenList)
+        {
+            <tr>
+                <td>@dosen.Nip</td>
+                <td>@dosen.Nama_Dosen</td>
+                <td><a href="@Url.Action("ViewDosen", "Dosen", new { nip = dosen.Nip })">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h1>dibawah ini ada pagination</h1>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("IndexDosen", new { currentPage = Model.CurrentPage - 1, searchString = Model.SearchString })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("IndexDosen", new { currentPage = i, searchString = Model.SearchString })">@i</a>
+            </li>
+        }
+
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("IndexDosen", new { currentPage = Model.CurrentPage + 1, searchString = Model.SearchString })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
+
+
+
