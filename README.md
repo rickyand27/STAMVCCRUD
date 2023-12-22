@@ -12,13 +12,13 @@ Proyek ini adalah aplikasi berbasis web yang dikembangkan menggunakan bahasa pem
 ![Tampilan Awal](images/images1.png)
 
 ### Tampilan Menu Mahasiswa
-![Tampilan Awal](images/images2.png)
+![Tampilan Awal](images/images5.png)
 
 ### Tampilan Menu Matakuliah
-![Tampilan Awal](images/images3.png)
+![Tampilan Awal](images/images2.png)
 
 ### Tampilan Menu Dosen
-![Tampilan Awal](images/images4.png)
+![Tampilan Awal](images/images3.png)
 
 ### Tampilan Menu Perkuliahan
-![Tampilan Awal](images/images5.png)
+![Tampilan Awal](images/images4.png)
