@@ -1,1 +1,1 @@
-![Tampilan Awal](images/logo1.png)
+![Tampilan Awal](images/images1.png)
